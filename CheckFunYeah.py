@@ -14,13 +14,13 @@ def install(package):
     pip.main(['install', '--quiet', package])
 
 # Hard coded dependencies! Yeah!
-requiredModules = ['requests', 'beautifulsoup4']
+requiredModules = [['requests', 'requests'], ['bs4', 'beautifulsoup4']]
 for module in requiredModules: # For installing needed modules.
     try:
-        imp.find_module(module)
+        imp.find_module(module[0])
     except ImportError:
-        print "Installing " + module + "..."
-        install(module)
+        print "Installing " + module[1] + "..."
+        install(module[1])
 
 import kfyservers
 import confutil
