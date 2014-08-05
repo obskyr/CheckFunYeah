@@ -10,7 +10,7 @@ Want to keep idle in the lobby, but don't want CheckFunYeah to react to you? No 
 
 Before you do anything else, make sure you have [Python 2](https://www.python.org/downloads/) and [Pip](http://pip.readthedocs.org/en/latest/installing.html) (get the file called "get-pip.py") installed. Both of these are very important.
 
-Once you have both, just run `CheckFunYeah.py` by double-clicking on it or lauching it via the command line. The first time you run it, it should install a few modules it needs. If it runs into trouble you might have to do it manually, but it should hopefully work without any problems. Once those are installed, it'll run as it normally would.
+Once you have both, just run `CheckFunYeah.py` by double-clicking on it or launching it via the command line. The first time you run it, it should install a few modules it needs. If it runs into trouble you might have to do it manually, but it should hopefully work without any problems. Once those are installed, it'll run as it normally would.
 
 ##Settings
 
