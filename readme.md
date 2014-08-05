@@ -12,6 +12,8 @@ Before you do anything else, make sure you have [Python 2](https://www.python.or
 
 Once you have both, just run `CheckFunYeah.py` by double-clicking on it or launching it via the command line. The first time you run it, it should install a few modules it needs. If it runs into trouble you might have to do it manually, but it should hopefully work without any problems. Once those are installed, it'll run as it normally would.
 
+**IMPORTANT NOTE:** Audio will only work on Windows. Python does sadly not have any good audio solutions.
+
 ##Settings
 
 There are a multitude of settings you can change, all in `settings.cfg`. Just open up the file with any text editor and you can change the parameters around. Here are the parameters and their respective values

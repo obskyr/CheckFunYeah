@@ -51,7 +51,7 @@ while True:
     ignoredOnline = [x for x in playersOnline if x.lower() in ignoreList]
     
     if numPlayers - len(ignoredOnline) > 0:
-        if (config['Notify on every check'] or prevNumPlayers <= 0) and config['Play sound']:
+        if (config['Notify on every check'] or prevNumPlayers <= 0) and config['Play sound'] and soundEnabled:
             winsound.PlaySound(noteSound, winsound.SND_FILENAME)
         if [x for x in playersOnline if x not in prevPlayersOnline]: # Only notify if the players have changed
             if numPlayers <= config['Max number of players to show names of']: # Print a player list
