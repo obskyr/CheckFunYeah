@@ -14,7 +14,7 @@ def install(package):
     pip.main(['install', '--quiet', package])
 
 # Hard coded dependencies! Yeah!
-requiredModules = ['requests', 'bs4']
+requiredModules = ['requests', 'beautifulsoup4']
 for module in requiredModules: # For installing needed modules.
     try:
         imp.find_module(module)
