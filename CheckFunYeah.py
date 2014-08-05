@@ -35,6 +35,23 @@ except ImportError:
 
 print "--- CheckFunYeah {0} started! Let's do this! ---".format(version)
 
+def joinLists(lists):
+    """Joins [lists] into one and returns the result."""
+    uberlist = []
+    for l in lists:
+        uberlist.extend(l)
+    return uberlist
+def unique(lists):
+    """Returns a list of all the elements that only appear in one of the lists in [lists]."""
+    uniques = []
+    for i, l in enumerate(lists):
+        otherLists = lists[0:i] + lists[i+1:]
+        otherLists = joinLists(otherLists)
+        for v in l:
+            if not v in otherLists:
+                uniques.append(v)
+    return uniques
+
 noteSound = os.path.join('resources', 'checkit.wav')
 config = confutil.getConfig('settings.cfg')
 config['Play sound'] = confutil.strToBool(config['Play sound'])
@@ -53,12 +70,11 @@ while True:
     if numPlayers - len(ignoredOnline) > 0:
         if (config['Notify on every check'] or prevNumPlayers <= 0) and config['Play sound'] and soundEnabled:
             winsound.PlaySound(noteSound, winsound.SND_FILENAME)
-        if [x for x in playersOnline if x not in prevPlayersOnline]: # Only notify if the players have changed
+        if unique(playersOnline, prevPlayersOnline): # Only notify if the players have changed
             if numPlayers <= config['Max number of players to show names of']: # Print a player list
                 playersOnline = playersOnline if playersOnline else kfyservers.getPlayers()
                 print time.strftime("[%H:%M:%S] ", time.localtime()) + ', '.join(playersOnline)
             else:
-                print
                 print str(numPlayers) + ' players online!'
     elif numPlayers == 0 and prevNumPlayers != 0:
         print time.strftime("[%H:%M:%S] ", time.localtime()) + "No players online at all!"
