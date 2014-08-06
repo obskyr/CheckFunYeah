@@ -69,16 +69,16 @@ while True:
     
     if numPlayers - len(ignoredOnline) > 0:
         if (config['Notify on every check'] or prevNumPlayers <= 0) and config['Play sound'] and soundEnabled:
-            winsound.PlaySound(noteSound, winsound.SND_FILENAME)
+            # Doesn't really matter when sound is played, since it's asynchronous.
+            winsound.PlaySound(noteSound, winsound.SND_FILENAME | winsound.SND_ASYNC)
         if unique([playersOnline, prevPlayersOnline]): # Only notify if the players have changed
             if numPlayers <= config['Max number of players to show names of']: # Print a player list
-                playersOnline = playersOnline if playersOnline else kfyservers.getPlayers()
                 print time.strftime("[%H:%M:%S] ", time.localtime()) + ', '.join(playersOnline)
             else:
                 print str(numPlayers) + ' players online!'
     elif numPlayers == 0 and prevNumPlayers != 0:
         print time.strftime("[%H:%M:%S] ", time.localtime()) + "No players online at all!"
-    elif prevNumPlayers != 0 and [x for x in playersOnline if x not in prevPlayersOnline]:
+    elif [x for x in playersOnline if x not in prevPlayersOnline]:
         print time.strftime("[%H:%M:%S] ", time.localtime()) + "No non-ignored players online."
     prevNumPlayers = numPlayers
     prevPlayersOnline = playersOnline
